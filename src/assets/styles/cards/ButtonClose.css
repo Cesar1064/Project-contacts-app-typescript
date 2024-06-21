@@ -1,0 +1,15 @@
+.button-close {
+  background-color: rgba(255, 255, 255, 0);
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--fourth-color);
+  border-radius: 5px;
+  font-size: 10px;
+  color: var(--fourth-color);
+  padding: 5px 5px;
+  cursor: pointer;
+}
+.button-close img {
+  width: 20px;
+  height: auto;
+}

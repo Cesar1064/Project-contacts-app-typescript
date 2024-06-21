@@ -1,0 +1,15 @@
+.button-remove {
+  background-color: rgba(255, 255, 255, 0);
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--fourth-color);
+  border-radius: 5px;
+  font-size: 12px;
+  color: var(--fourth-color);
+  padding: 4px 12px;
+}
+.button-remove img {
+  width: 20px;
+  height: auto;
+  margin-right: 5px;
+}
