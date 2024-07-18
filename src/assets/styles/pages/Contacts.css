@@ -1,0 +1,22 @@
+.contacts {
+  padding-top: 100px;
+}
+.pagination {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 50px 0;
+}
+.pagination span {
+  margin-right: 10px;
+  font-weight: 900;
+}
+.pagination button {
+  border: none;
+  padding: 10px 10px;
+  border-radius: 10px;
+}
+.angle {
+  width: 15px;
+  height: auto;
+}

@@ -1,14 +1,22 @@
 import { useEffect, useState } from 'react';
-import newIcon from '../../assets/images/+NEW.png';
 import buttonSideBar from '../../assets/images/Button-SideBar.png';
-import '../../assets/styles/header/header.css';
+import { Link, useLocation } from 'react-router-dom';
+import '../../assets/styles/components/header/header.css';
+import { Form } from './Form';
+import { ButtonAdd } from './ButtonAdd';
 
 export const Header = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState<Boolean>(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const currLocation = location.pathname;
 
   const dropdownMenu = () => {
-    setIsOpen(!isOpen);
+    setIsMenuOpen(!isMenuOpen);
+  };
+  const dropdownForm: () => void = () => {
+    setIsFormOpen(!isFormOpen);
   };
 
   useEffect(() => {
@@ -24,7 +32,7 @@ export const Header = () => {
 
   return (
     <>
-      {windowWidth <= 679 ? (
+      {windowWidth <= 730 ? (
         <header>
           <nav>
             <div className="nav-logo">
@@ -37,26 +45,43 @@ export const Header = () => {
               </button>
             </div>
           </nav>
-          {isOpen && (
+          {isMenuOpen && (
             <div className="dropdown-menu">
               <ul role="tablist">
                 <li role="tab">
-                  <a href="#">Overview</a>
+                  {currLocation === '/' ? (
+                    <Link to="/" style={{ color: '#c1d72f' }}>
+                      Overview
+                    </Link>
+                  ) : (
+                    <Link to="/">Overview</Link>
+                  )}
                 </li>
                 <li role="tab">
-                  <a href="#">Contacts</a>
+                  {currLocation === '/contacts' ? (
+                    <Link to="/" style={{ color: '#c1d72f' }}>
+                      Contacts
+                    </Link>
+                  ) : (
+                    <Link to="/contacts">Contacts</Link>
+                  )}
                 </li>
                 <li role="tab">
-                  <a href="#">Favorites</a>
+                  {currLocation === '/favorites' ? (
+                    <Link to="/" style={{ color: '#c1d72f' }}>
+                      Favorites
+                    </Link>
+                  ) : (
+                    <Link to="/favorites">Favorites</Link>
+                  )}
                 </li>
                 <li role="tab">
-                  <button>
-                    <img src={newIcon} alt="" />
-                  </button>
+                  <ButtonAdd dropdownForm={dropdownForm} />
                 </li>
               </ul>
             </div>
           )}
+          <Form isOpen={isFormOpen} />
         </header>
       ) : (
         <header>
@@ -72,22 +97,39 @@ export const Header = () => {
             <div className="nav-menu">
               <ul role="tablist">
                 <li role="tab">
-                  <a href="#">Overview</a>
+                  {currLocation === '/' ? (
+                    <Link to="/" style={{ color: '#c1d72f' }}>
+                      Overview
+                    </Link>
+                  ) : (
+                    <Link to="/">Overview</Link>
+                  )}
                 </li>
                 <li role="tab">
-                  <a href="#">Contacts</a>
+                  {currLocation === '/contacts' ? (
+                    <Link to="/" style={{ color: '#c1d72f' }}>
+                      Contacts
+                    </Link>
+                  ) : (
+                    <Link to="/contacts">Contacts</Link>
+                  )}
                 </li>
                 <li role="tab">
-                  <a href="#">Favorites</a>
+                  {currLocation === '/favorites' ? (
+                    <Link to="/" style={{ color: '#c1d72f' }}>
+                      Favorites
+                    </Link>
+                  ) : (
+                    <Link to="/favorites">Favorites</Link>
+                  )}
                 </li>
                 <li role="tab">
-                  <button>
-                    <img src={newIcon} alt="" />
-                  </button>
+                  <ButtonAdd dropdownForm={dropdownForm} />
                 </li>
               </ul>
             </div>
           </nav>
+          <Form isOpen={isFormOpen} />
         </header>
       )}
     </>

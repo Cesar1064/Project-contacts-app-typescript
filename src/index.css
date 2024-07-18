@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-:root{
-  --primary-color:#C1D72F;
-  --secondary-color:#231F20;
-  --tertiary-color:#323232;
-  --fourth-color:#CF6679;
+:root {
+  --primary-color: #c1d72f;
+  --secondary-color: #231f20;
+  --tertiary-color: #323232;
+  --fourth-color: #cf6679;
   --font-family: 'Roboto', sans-serif;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
@@ -11,5 +11,22 @@
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
+}
 
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bebebe;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7c7c7c;
 }

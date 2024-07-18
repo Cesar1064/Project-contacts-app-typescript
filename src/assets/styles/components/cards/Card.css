@@ -18,10 +18,16 @@
   /* margin: auto; */
   min-height: 196px;
 }
-.card-general-information img {
+.card-general-information-img {
   border-radius: 70px;
   width: 128px;
   height: 128px;
+}
+.card-general-information-img-favorite {
+  border-radius: 70px;
+  width: 128px;
+  height: 128px;
+  outline: 5px solid var(--primary-color);
 }
 .card-general-information h3 {
   margin-top: 1px;

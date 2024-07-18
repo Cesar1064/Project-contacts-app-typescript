@@ -7,6 +7,7 @@
   font-size: 12px;
   color: var(--fourth-color);
   padding: 4px 12px;
+  cursor: pointer;
 }
 .button-remove img {
   width: 20px;

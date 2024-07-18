@@ -1,0 +1,37 @@
+.button-add-contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 30px;
+  background-color: var(--primary-color);
+  border: 0px solid white;
+  border-radius: 8px;
+  padding: 2px 10px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+
+.button-add-contact:hover {
+  background-color: var(--primary-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.button-add-contact:active {
+  background-color: var(--primary-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: scale(0.95);
+}
+
+button span {
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-left: 10px;
+  flex: 1;
+  font-size: 14px;
+  font-family: var(--font-family);
+}

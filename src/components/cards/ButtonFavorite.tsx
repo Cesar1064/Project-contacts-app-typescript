@@ -1,9 +1,21 @@
 import favoriteIcon from '../../assets/images/favorite.svg';
-import '../../assets/styles/cards/ButtonFavorite.css';
+import { useAppDispatch } from '../../hooks/useStore';
+import '../../assets/styles/components/cards/ButtonFavorite.css';
+import { addToFavorites } from '../../store/contactList/slice';
 
-export const ButtonFavorite = () => {
+interface Props {
+  contactId: number;
+}
+
+export const ButtonFavorite = ({ contactId }: Props) => {
+  const dispatch = useAppDispatch();
+  const handleFavoriteContact = () => {
+    console.log({ contactId });
+
+    dispatch(addToFavorites(contactId));
+  };
   return (
-    <button className="button-favorite">
+    <button className="button-favorite" onClick={handleFavoriteContact}>
       <img src={favoriteIcon} alt="favorite" />
     </button>
   );
