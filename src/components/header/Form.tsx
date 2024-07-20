@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
 import '../../assets/styles/components/header/Form.css';
 import { useAppDispatch } from '../../hooks/useStore';
 import { addUsers } from '../../store/contactList/slice';
 import Avatar from '../../assets/images/avatarImage.png';
+import Swal from 'sweetalert2';
 
 interface Props {
   isOpen: Boolean;
@@ -10,7 +10,6 @@ interface Props {
 
 export const Form = ({ isOpen }: Props) => {
   const dispatch = useAppDispatch();
-  const [error, setError] = useState<string>('');
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -26,12 +25,21 @@ export const Form = ({ isOpen }: Props) => {
     const avatar = Avatar;
 
     if (!first_name || !last_name || !email) {
-      setError('Please fill out all fields.');
+      Swal.fire({
+        title: 'Ohh no!',
+        text: 'Please fill out all fields!',
+        icon: 'error',
+      });
       return;
     }
 
     if (!isValidEmail(email)) {
-      setError('Please enter a valid email address.');
+      Swal.fire({
+        title: 'Ohh no!',
+        text: 'Please enter a valid email address!',
+        icon: 'error',
+      });
+
       return;
     }
 
@@ -47,7 +55,11 @@ export const Form = ({ isOpen }: Props) => {
     );
 
     form.reset();
-    setError('');
+    Swal.fire({
+      title: 'Saved!',
+      text: 'Contact saved successfully',
+      icon: 'success',
+    });
   };
 
   const isValidEmail = (email: string): boolean => {
@@ -65,7 +77,6 @@ export const Form = ({ isOpen }: Props) => {
           <label htmlFor="isFavorite">Enable like favorite</label>
           <input id="isFavorite" name="isFavorite" type="checkbox" />
         </div>
-        {error && <p className="error-message">{error}</p>}
         <button type="submit">SAVE</button>
       </form>
     </section>

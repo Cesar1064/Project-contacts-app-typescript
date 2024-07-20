@@ -1,22 +1,29 @@
 import deleteIcon from '../../assets/images/delete.svg';
-import { useAppDispatch } from '../../hooks/useStore';
-import { deleteContactById } from '../../store/contactList/slice';
 import '../../assets/styles/components/cards/ButtonDelete.css';
+import { useState } from 'react';
+import { Modal } from './Modal';
 
 interface Props {
   contactId: number;
 }
 
 export const ButtonDelete = ({ contactId }: Props) => {
-  const dispatch = useAppDispatch();
-
-  const handleDeleteContact = () => {
-    dispatch(deleteContactById(contactId));
+  const [showModal, setShowModal] = useState(false);
+  const openModal = () => {
+    setShowModal(true);
+  };
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   return (
-    <button className="button-delete" onClick={handleDeleteContact}>
-      <img src={deleteIcon} alt="delete" />
-    </button>
+    <>
+      <button className="button-delete" onClick={openModal}>
+        <img src={deleteIcon} alt="delete" />
+      </button>
+      {showModal ? (
+        <Modal contactId={contactId} closeModal={closeModal} action="delete" />
+      ) : null}
+    </>
   );
 };

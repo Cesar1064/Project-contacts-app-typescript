@@ -57,6 +57,7 @@ export const Contacts = () => {
             ))}
           </article>
           <div className="pagination">
+            <span>Total Contacts : {data.length}</span>
             <span>
               {currentPage} of {totalPages}
             </span>

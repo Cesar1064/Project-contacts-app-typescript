@@ -1,21 +1,27 @@
 import closeIcon from '../../assets/images/close.svg';
-import { useAppDispatch } from '../../hooks/useStore';
-
 import '../../assets/styles/components/cards/ButtonClose.css';
-import { removeToFavorites } from '../../store/contactList/slice';
+import { useState } from 'react';
+import { Modal } from './Modal';
 
 interface Props {
   contactId: number;
 }
 export const ButtonClose = ({ contactId }: Props) => {
-  const dispatch = useAppDispatch();
-
-  const handleRemoveToFavorite = () => {
-    dispatch(removeToFavorites(contactId));
+  const [showModal, setShowModal] = useState(false);
+  const openModal = () => {
+    setShowModal(true);
+  };
+  const closeModal = () => {
+    setShowModal(false);
   };
   return (
-    <button className="button-close" onClick={handleRemoveToFavorite}>
-      <img src={closeIcon} alt="close" />
-    </button>
+    <>
+      <button className="button-close" onClick={openModal}>
+        <img src={closeIcon} alt="close" />
+      </button>
+      {showModal ? (
+        <Modal contactId={contactId} closeModal={closeModal} action="remove" />
+      ) : null}
+    </>
   );
 };
