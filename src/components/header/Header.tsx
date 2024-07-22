@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import buttonSideBar from '../../assets/images/Button-SideBar.png';
 import { Link, useLocation } from 'react-router-dom';
-import '../../assets/styles/components/header/header.css';
+import '../../assets/styles/components/header/Header.css';
 import { Form } from './Form';
 import { ButtonAdd } from './ButtonAdd';
 
@@ -15,7 +15,7 @@ export const Header = () => {
   const dropdownMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  const dropdownForm: () => void = () => {
+  const dropdownForm = () => {
     setIsFormOpen(!isFormOpen);
   };
 
@@ -46,40 +46,45 @@ export const Header = () => {
             </div>
           </nav>
           {isMenuOpen && (
-            <div className="dropdown-menu">
-              <ul role="tablist">
-                <li role="tab">
-                  {currLocation === '/' ? (
-                    <Link to="/" style={{ color: '#c1d72f' }}>
-                      Overview
-                    </Link>
-                  ) : (
-                    <Link to="/">Overview</Link>
-                  )}
-                </li>
-                <li role="tab">
-                  {currLocation === '/contacts' ? (
-                    <Link to="/" style={{ color: '#c1d72f' }}>
-                      Contacts
-                    </Link>
-                  ) : (
-                    <Link to="/contacts">Contacts</Link>
-                  )}
-                </li>
-                <li role="tab">
-                  {currLocation === '/favorites' ? (
-                    <Link to="/" style={{ color: '#c1d72f' }}>
-                      Favorites
-                    </Link>
-                  ) : (
-                    <Link to="/favorites">Favorites</Link>
-                  )}
-                </li>
-                <li role="tab">
-                  <ButtonAdd dropdownForm={dropdownForm} />
-                </li>
-              </ul>
-            </div>
+            <section className="dropdown">
+              <div className={`dropdown-menu ${isMenuOpen ? 'show' : ''}`}>
+                <ul role="tablist">
+                  <li role="tab">
+                    {currLocation === '/' ? (
+                      <Link to="/" style={{ color: '#c1d72f' }}>
+                        Overview
+                      </Link>
+                    ) : (
+                      <Link to="/">Overview</Link>
+                    )}
+                  </li>
+                  <li role="tab">
+                    {currLocation === '/contacts' ? (
+                      <Link to="/" style={{ color: '#c1d72f' }}>
+                        Contacts
+                      </Link>
+                    ) : (
+                      <Link to="/contacts">Contacts</Link>
+                    )}
+                  </li>
+                  <li role="tab">
+                    {currLocation === '/favorites' ? (
+                      <Link to="/" style={{ color: '#c1d72f' }}>
+                        Favorites
+                      </Link>
+                    ) : (
+                      <Link to="/favorites">Favorites</Link>
+                    )}
+                  </li>
+                  <li role="tab">
+                    <ButtonAdd
+                      dropdownForm={dropdownForm}
+                      dropdownMenu={dropdownMenu}
+                    />
+                  </li>
+                </ul>
+              </div>
+            </section>
           )}
           <Form isOpen={isFormOpen} />
         </header>
@@ -124,7 +129,10 @@ export const Header = () => {
                   )}
                 </li>
                 <li role="tab">
-                  <ButtonAdd dropdownForm={dropdownForm} />
+                  <ButtonAdd
+                    dropdownMenu={dropdownMenu}
+                    dropdownForm={dropdownForm}
+                  />
                 </li>
               </ul>
             </div>

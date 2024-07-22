@@ -7,15 +7,12 @@
   flex-direction: column;
   min-width: 230px;
   min-height: 258px;
-  /* flex-grow: 1;
-   */
   margin-bottom: 10px;
   border-radius: 5px;
 }
 .card-general-information {
-  border-bottom: 1px solid rgba(221, 221, 221, 0.692);
+  border-bottom: 1px solid rgba(184, 184, 184, 0.692);
   text-align: center;
-  /* margin: auto; */
   min-height: 196px;
 }
 .card-general-information-img {

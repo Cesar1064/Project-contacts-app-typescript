@@ -2,15 +2,32 @@
   background-color: rgba(255, 255, 255, 0);
   display: flex;
   align-items: center;
+  justify-content: center;
   border: 1px solid var(--fourth-color);
   border-radius: 5px;
   font-size: 12px;
   color: var(--fourth-color);
   padding: 4px 12px;
   cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    #cf2a49 50%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition:
+    background-position 0.8s ease-out,
+    color 0.8s ease-out;
 }
+
 .button-remove img {
   width: 20px;
   height: auto;
   margin-right: 5px;
+}
+
+.button-remove:hover {
+  background-position: left bottom;
+  color: white;
 }
