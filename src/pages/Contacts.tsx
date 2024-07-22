@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Header } from '../components/header/Header';
 import { useAppDispatch, useAppSelector } from '../hooks/useStore';
 import { fetchContacts } from '../store/contactList/slice';
@@ -8,6 +8,13 @@ import angleLeft from '../assets/images/angle-left.svg';
 import angleRight from '../assets/images/angle-right.svg';
 
 export const Contacts = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const scrollToStart = () => {
+    if (sectionRef.current) {
+      sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useAppDispatch();
   const { data } = useAppSelector(state => state.contactList);
@@ -32,11 +39,13 @@ export const Contacts = () => {
       setCurrentPage(currentPage - 1);
     }
   };
-
+  useEffect(() => {
+    scrollToStart();
+  }, [currentPage]);
   return (
     <>
       <Header />
-      <section className="contacts">
+      <section className="contacts" ref={sectionRef}>
         <section className="overview-contacts">
           <div className="header">
             <span className="title">Contact List</span>

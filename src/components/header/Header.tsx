@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import buttonSideBar from '../../assets/images/Button-SideBar.png';
 import { Link, useLocation } from 'react-router-dom';
 import '../../assets/styles/components/header/Header.css';
@@ -6,6 +6,13 @@ import { Form } from './Form';
 import { ButtonAdd } from './ButtonAdd';
 
 export const Header = () => {
+  const sectionFormRef = useRef<HTMLDivElement>(null);
+
+  const scrollToStart = () => {
+    if (sectionFormRef.current) {
+      sectionFormRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isFormOpen, setIsFormOpen] = useState<Boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,11 +36,13 @@ export const Header = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
+  useEffect(() => {
+    scrollToStart();
+  }, [isFormOpen]);
   return (
     <>
       {windowWidth <= 730 ? (
-        <header>
+        <header ref={sectionFormRef}>
           <nav>
             <div className="nav-logo">
               <img
@@ -89,7 +98,7 @@ export const Header = () => {
           <Form isOpen={isFormOpen} />
         </header>
       ) : (
-        <header>
+        <header ref={sectionFormRef}>
           <nav>
             <div className="nav-logo">
               <figure>

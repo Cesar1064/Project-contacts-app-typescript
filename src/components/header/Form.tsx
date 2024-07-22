@@ -1,8 +1,8 @@
 import '../../assets/styles/components/header/Form.css';
 import { useAppDispatch } from '../../hooks/useStore';
 import { addUsers } from '../../store/contactList/slice';
-import Avatar from '../../assets/images/avatarImage.png';
 import Swal from 'sweetalert2';
+import Avatar from '../../assets/images/avatarImage.png';
 
 interface Props {
   isOpen: Boolean;
@@ -11,7 +11,7 @@ interface Props {
 export const Form = ({ isOpen }: Props) => {
   const dispatch = useAppDispatch();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const form = event.currentTarget;
@@ -22,7 +22,13 @@ export const Form = ({ isOpen }: Props) => {
     const email = formData.get('email') as string;
     const isFavorite = formData.get('isFavorite') === 'on';
     const id = Date.now() + Math.random();
-    const avatar = Avatar;
+    const avatarFile = formData.get('avatar') as File | null;
+
+    let avatar = Avatar;
+
+    if (avatarFile) {
+      avatar = URL.createObjectURL(avatarFile);
+    }
 
     if (!first_name || !last_name || !email) {
       Swal.fire({
@@ -74,9 +80,13 @@ export const Form = ({ isOpen }: Props) => {
         <input name="last_name" type="text" placeholder="Last Name" />
         <input name="email" type="email" placeholder="Email" />
         <div>
+          <input id="avatar" name="avatar" type="file" accept="image/*" />
+        </div>
+        <div>
           <label htmlFor="isFavorite">Enable like favorite</label>
           <input id="isFavorite" name="isFavorite" type="checkbox" />
         </div>
+
         <button type="submit">SAVE</button>
       </form>
     </section>
