@@ -11,7 +11,11 @@ interface Props {
   avatar: string;
   id: number;
   isFavorite: boolean;
-  currLocation: 'favorite' | 'contacts' | 'overview-contact';
+  currLocation:
+    | 'favorite'
+    | 'contacts'
+    | 'overview-contact'
+    | 'invalid-location';
 }
 
 export const Card = ({

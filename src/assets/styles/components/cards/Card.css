@@ -19,12 +19,14 @@
   border-radius: 70px;
   width: 128px;
   height: 128px;
+  object-fit: cover;
 }
 .card-general-information-img-favorite {
   border-radius: 70px;
   width: 128px;
   height: 128px;
   outline: 5px solid var(--primary-color);
+  object-fit: cover;
 }
 .card-general-information h3 {
   margin-top: 1px;

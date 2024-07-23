@@ -45,10 +45,12 @@ export const Header = () => {
         <header ref={sectionFormRef}>
           <nav>
             <div className="nav-logo">
-              <img
-                src="https://www.globant.com/themes/custom/globant_corp_theme/images/2019/globant-logo-dark.svg"
-                alt="Logo_Globant"
-              />
+              <Link to="/">
+                <img
+                  src="https://www.globant.com/themes/custom/globant_corp_theme/images/2019/globant-logo-dark.svg"
+                  alt="Logo_Globant"
+                />
+              </Link>
               <button onClick={dropdownMenu}>
                 <img src={buttonSideBar} alt="menu" />
               </button>
@@ -102,10 +104,12 @@ export const Header = () => {
           <nav>
             <div className="nav-logo">
               <figure>
-                <img
-                  src="https://www.globant.com/themes/custom/globant_corp_theme/images/2019/globant-logo-dark.svg"
-                  alt="Logo_Globant"
-                />
+                <Link to="/">
+                  <img
+                    src="https://www.globant.com/themes/custom/globant_corp_theme/images/2019/globant-logo-dark.svg"
+                    alt="Logo_Globant"
+                  />
+                </Link>
               </figure>
             </div>
             <div className="nav-menu">

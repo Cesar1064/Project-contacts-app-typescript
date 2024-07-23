@@ -22,11 +22,11 @@ export const Form = ({ isOpen }: Props) => {
     const email = formData.get('email') as string;
     const isFavorite = formData.get('isFavorite') === 'on';
     const id = Date.now() + Math.random();
-    const avatarFile = formData.get('avatar') as File | null;
+    const avatarFile = formData.get('avatar') as any;
 
     let avatar = Avatar;
 
-    if (avatarFile) {
+    if (avatarFile?.size > 0) {
       avatar = URL.createObjectURL(avatarFile);
     }
 
