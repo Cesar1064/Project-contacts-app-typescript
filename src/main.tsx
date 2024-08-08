@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './assets/styles/components/header/Header.css';
 import App from './App.tsx';
 import './index.css';
 import { Provider } from 'react-redux';

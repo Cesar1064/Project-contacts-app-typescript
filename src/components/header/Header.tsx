@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import buttonSideBar from '../../assets/images/Button-SideBar.png';
 import { Link, useLocation } from 'react-router-dom';
-import '../../assets/styles/components/header/Header.css';
 import { Form } from './Form';
 import { ButtonAdd } from './ButtonAdd';
 
